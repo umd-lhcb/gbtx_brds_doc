@@ -32,6 +32,7 @@ deploy:
         - "./gbtx_communication_doc.pdf"
         - "./config/lhcb_daq_firmware_master_forUT_120618.sof"
         - "./config/master.txt"
+        - "./config/master-ext_refclk.txt"
         - "./config/slave-Tx.txt"
         - "./config/slave-TRx.txt"
     skip_cleanup: true
