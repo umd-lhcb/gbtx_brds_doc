@@ -1,6 +1,9 @@
 \subsection{PRBS tests}
 
-\paragraph{Test 1.} Follow the following steps:
+\paragraph{Test 1.}
+This test instructs slave GBTx to transmit self-generated PRBS data, instead of
+elink data.
+Follow the following steps:
 \begin{enumerate}
     \item Configure the GBTx slave to send PRBS data. Write ``03151515'' to
         slave register \texttt{0x1c}, setting size to 4.
@@ -37,7 +40,9 @@ can reproduce the exact behavior:
 All loopback channels go green, instead of error out.
 We deem it acceptable, at least for the time being.
 
-\paragraph{Test 2.} Follow the following steps:
+\paragraph{Test 2.}
+This is a loopback test, bypassing GBTx ASIC.
+Follow the following steps:
 \begin{enumerate}
     \item Configure the GBTx slave to send PRBS data. Write ``00171717'' to
         slave register \texttt{0x1c}, setting size to 4.
