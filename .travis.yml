@@ -30,11 +30,12 @@ deploy:
         secure: a0NQwmfsWa1flhUyO1U1FgjVhfcvANMYTEamWkQPZC8I/u2eva7/q7BDdKhb4NJfCy6DbDMJ0PkH2hrDRhYucdWv1SnX0WwJWt9YW9rNE3hPg8Pimhvsq9+MME+DU0Amr0OromPpJ4fxitVr/H6mOGMyfe3z3RdMv08csgIML/F8dk4ue1p9uCDsOhiQS0KonCLC3Zr8LIAZhyz9Ypq8njYuXRA9k8kJRiIk6pjhz7qf9AGjHgtwJT9gtd4T0+U2uCbc1/UVIw7SIxwV2EbIfWrtY8PXSONmV02PX3bfZ5ZLnMzD/q1xorMYIwKtKDf7jgTR50NSbUd7wBNq28DR6BPS22jBzNX4Nhc7MPSV8i0P1Tt4+PfYtZYRkWZeRQ/qXsivP1c/HOXxzuS60khteY6Wwa1tDJEeMU8vUywsuS1PmsUSkODhfIrWdCSc3R71/MwGdahBMzmyM9+0xXDVa4h4gXwSOXIy6qNWqftLYrx6PdTY8+8WZ/ooYNniJnE/VqBsXu02ubnyL9LNuj5x0hqECbiJz1GUxWGTrZ67RtR6pve7ub4ynmwTiR0NZ3SqOqFTqVU32mAy5k1a1jLV9umU5Bhzh0vbuWwZ1bbuekqq+pfrxzKUnbctXngESxoX6djD9xZzGadmZ6GRE1mxhlh9Vib2bEEj22rl2fc9nHk=
     file:
         - "./gbtx_communication_doc.pdf"
-        - "./config/lhcb_daq_firmware_master_forUT_120618.sof"
+        - "./config/lhcb_daq_firmware_master_for_ut.sof"
         - "./config/master.txt"
         - "./config/master-ext_refclk.txt"
-        - "./config/slave-Tx.txt"
         - "./config/slave-TRx.txt"
+        - "./config/slave-Tx.txt"
+        - "./config/slave-Tx-reduced_eports.txt"
     skip_cleanup: true
     on:
         tags: true
