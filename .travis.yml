@@ -34,6 +34,7 @@ deploy:
         - "./config/master-ext_refclk.txt"
         - "./config/slave-TRx.txt"
         - "./config/slave-Tx.txt"
+        - "./config/slave-Tx-wrong_termination.txt"
         - "./config/slave-Tx-reduced_eports.txt"
     skip_cleanup: true
     on:
