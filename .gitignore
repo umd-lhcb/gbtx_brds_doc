@@ -6,3 +6,5 @@
 *.jpg
 *.pdf
 _minted*
+build
+*.synctex.gz
