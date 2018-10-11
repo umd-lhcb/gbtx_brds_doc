@@ -1,7 +1,7 @@
 # Author: Yipeng Sun <syp at umd dot edu>
 #
 # Based on: https://tex.stackexchange.com/questions/40738/how-to-properly-make-a-latex-project
-# Last Change: Thu Oct 11, 2018 at 04:31 PM -0400
+# Last Change: Thu Oct 11, 2018 at 04:43 PM -0400
 
 # Set default programs for compiling and archiving
 MAKE_TEX	:=	lualatex
@@ -12,7 +12,7 @@ ZIP_FILE	:=	gbtx_communication_doc.zip
 
 all: gbtx_communication_doc.pdf
 
-gbtx_communication_doc.pdf: gbtx_communication_doc.tex .git/gitHeadInfo.gin
+gbtx_communication_doc.pdf: gbtx_communication_doc.tex .git/gitHeadInfo.gin include/*
 	@latexmk -pdf \
 		-pdflatex="$(MAKE_TEX) -interaction=nonstopmode -synctex=1" \
 		-use-make \
