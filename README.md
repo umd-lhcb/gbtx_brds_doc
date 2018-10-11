@@ -9,6 +9,9 @@ Alternatively, one can clone/download this repository and build pdf files locall
 make pdf
 ```
 
+If it's your first time to build this project, please create a `build`
+directory under the project root.
+
 ## Configuration files
 Below we list usage of some of the configuration files.
 
