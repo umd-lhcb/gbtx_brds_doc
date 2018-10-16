@@ -1,34 +1,39 @@
 \subsubsection{Overview}
-Our current setup consists of one master and one slave GBTx board.
-When the slave is in widebus transceiver mode,
-the master is connected to the MiniDAQ GBTx channel 3 (fiber 8),
-and the slave can be connected to either GBT channel 0 (fiber 6) or channel 6
-(fiber 11).
-The master synchronizes its on-board clock to the signal from the MiniDAQ,
-and propagates its clock signal to the slave.
-The slave does not have an on-board clock,
-and is configured to obtain clock signal externally.
+Data control board (DCB) are intented to be a part of the LHCb upstream tracker
+upgrade.
+There is one master GBTx ASIC, and 6 data GBTx ASICs per board.
+DCB is much less flexible than GBTx DB, because it serves only one purpose:
+Receive SALT elink data then transmit that data to the counting room.
 
-When the slave is in widebus transmitter mode,
-again the master is connected to channel 3,
-and the slave can be connected to any of the MiniDAQ channel 6-11
-(physical fiber 11, 9, \ldots, 1).
-We will use these channels to connect to upcoming DCB boards.
+So far, we have been able to repeat PRBS test on DCBs:
+Programming the master, then programming data GBTxs, then instruct them to
+generate PRBS data, and verify generated data by MiniDAQ.
 
-The master \itwoc port is connected to an external USB device.
-The slave \itwoc port is connected to the master.
-Both are set to be programmed by the \itwoc channel,
-rather than GBT-IC channel.
+\autoref{fig:dcb_layout} shows the layout of an actual DCB board.
+More detailed GBTx ASICs and optical fiber grouping are described in the
+caption.
 
-The current setup is capable of:
-\begin{enumerate}
-    \item Program the slave GBTx board with MiniDAQ directly.
-    \item Read/Write the register value of the master GBTx board with GBT-IC
-        specification on the MiniDAQ.
-    \item Do PRBS tests from MiniDAQ to the slave, with slave configured in
-        either transceiver or transmitter mode, then back to the MiniDAQ.
-        The master is also required\footnote{
-            The master GBTx is also connected to the MiniDAQ with a different
-        channel, to provide reference clock to the slave.}
-        as the slave can only obtain its reference clock from the master.
-\end{enumerate}
+A DCB requires 4 optical mezzanines (not shown here) to function properly.
+As said above, DCB is less flexible, and there will be only \emph{one}
+configuration for DCBs.
+All DCBs shipped with UMD LHCb group will have its hardware jumpers
+pre-configured.
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}
+    \node [anchor=south west] (main) {
+            \includegraphics[width=0.9\linewidth]{dcb_layout.png}
+        };
+    \begin{scope}[x=(main.south east),y=(main.north west)]
+        \node [draw,red,minimum height=5em,minimum width=2em] (zoombox1)
+            at (0.51,0.65) {};
+    \end{scope}
+\end{tikzpicture}
+\caption{
+    Currently 007 cannot regain lock, but 008 can.
+    Note that during the loss of lock stage, 008 is much more noisy.
+    Measured on 008.
+}
+\label{fig:dcb_layout}
+\end{figure}
