@@ -1,0 +1,34 @@
+\subsubsection{Overview}
+Our current setup consists of one master and one slave GBTx board.
+When the slave is in widebus transceiver mode,
+the master is connected to the MiniDAQ GBTx channel 3 (fiber 8),
+and the slave can be connected to either GBT channel 0 (fiber 6) or channel 6
+(fiber 11).
+The master synchronizes its on-board clock to the signal from the MiniDAQ,
+and propagates its clock signal to the slave.
+The slave does not have an on-board clock,
+and is configured to obtain clock signal externally.
+
+When the slave is in widebus transmitter mode,
+again the master is connected to channel 3,
+and the slave can be connected to any of the MiniDAQ channel 6-11
+(physical fiber 11, 9, \ldots, 1).
+We will use these channels to connect to upcoming DCB boards.
+
+The master \itwoc port is connected to an external USB device.
+The slave \itwoc port is connected to the master.
+Both are set to be programmed by the \itwoc channel,
+rather than GBT-IC channel.
+
+The current setup is capable of:
+\begin{enumerate}
+    \item Program the slave GBTx board with MiniDAQ directly.
+    \item Read/Write the register value of the master GBTx board with GBT-IC
+        specification on the MiniDAQ.
+    \item Do PRBS tests from MiniDAQ to the slave, with slave configured in
+        either transceiver or transmitter mode, then back to the MiniDAQ.
+        The master is also required\footnote{
+            The master GBTx is also connected to the MiniDAQ with a different
+        channel, to provide reference clock to the slave.}
+        as the slave can only obtain its reference clock from the master.
+\end{enumerate}
