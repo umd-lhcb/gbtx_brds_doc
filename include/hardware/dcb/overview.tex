@@ -10,8 +10,9 @@ Programming the master, then programming data GBTxs, then instruct them to
 generate PRBS data, and verify generated data by MiniDAQ.
 
 \autoref{fig:dcb_layout} shows the layout of an actual DCB board.
-More detailed GBTx ASICs and optical fiber grouping are described in the
-caption.
+%GBTx ASICs layout are marked on the figure directly.
+Optical fiber grouping are marked by the \texttt{OMDBXX} label. For example,
+\texttt{OMDB23} means that data GBTxs 2 and 3 are connected to this mezzanine.
 
 A DCB requires 4 optical mezzanines (not shown here) to function properly.
 As said above, DCB is less flexible, and there will be only \emph{one}
@@ -26,14 +27,27 @@ pre-configured.
             \includegraphics[width=0.9\linewidth]{res/dcb_layout.png}
         };
     \begin{scope}[x=(main.south east),y=(main.north west)]
-        \node [draw,red,minimum height=5em,minimum width=2em] (zoombox1)
-            at (0.51,0.65) {};
+        \draw [fill=none,red,very thick] (0.24,0.76) rectangle ++(0.0813,0.1)
+            node [pos=.5] {\tiny\texttt{data 1}};
+        \draw [fill=none,red,very thick] (0.24,0.135) rectangle ++(0.0813,0.1)
+            node [pos=.5] {\tiny\texttt{data 6}};
+
+        \draw [fill=none,blue,very thick] (0.49,0.76) rectangle ++(0.0813,0.1)
+            node [pos=.5] {\tiny\texttt{data 2}};
+        \draw [fill=none,blue,very thick] (0.74,0.76) rectangle ++(0.0813,0.1)
+            node [pos=.5] {\tiny\texttt{data 3}};
+
+        \draw [fill=none,yellow,very thick] (0.74,0.135)
+                rectangle ++(0.0813,0.1)
+            node [pos=.5] {\tiny\texttt{data 4}};
+        \draw [fill=none,yellow,very thick] (0.49,0.135)
+                rectangle ++(0.0813,0.1)
+            node [pos=.5] {\tiny\texttt{data 5}};
+
+        \draw [fill=none,green,very thick] (0.74,0.448) rectangle ++(0.0813,0.1)
+            node [pos=.5] {\tiny\texttt{master}};
     \end{scope}
 \end{tikzpicture}
-\caption{
-    Currently 007 cannot regain lock, but 008 can.
-    Note that during the loss of lock stage, 008 is much more noisy.
-    Measured on 008.
-}
+\caption{Pilot-run DCB layout.}
 \label{fig:dcb_layout}
 \end{figure}

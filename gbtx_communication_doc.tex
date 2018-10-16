@@ -27,6 +27,9 @@
 
 \usepackage[section]{placeins}  % Figures can only float within its section
 
+\usepackage{chngcntr}
+\counterwithin{figure}{subsection}
+
 \def\itwoc{I{$\scriptstyle^2$}C\ }
 \newcommand\symbolwithin[2]{%
     {\mathmakebox[\widthof{\ensuremath{{}#2{}}}][c]{{#1}}}}
@@ -38,6 +41,7 @@
 \maketitle
 \hfill\small{\texttt{Rev:~\gitRel~(\gitAbbrevHash)}}
 \tableofcontents
+\listoffigures
 \clearpage
 
 \section{Hardware setup}
