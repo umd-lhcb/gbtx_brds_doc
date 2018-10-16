@@ -1,7 +1,9 @@
-\subsubsection{Reset GBTx}
-Sometimes GBTx boards will not be properly reset by reprogramming. In such case,
-a hard reset is needed.
-Follow the \autoref{fig:gbtx-reset} to reset GBTx boards.
+\subsubsection{Reset GBTx ASIC}
+Sometimes GBTx ASIC will not be properly reset by reprogramming, or it may have
+erratic/unexpected behaviors.
+In such case, a manual jumper reset can be performed on the GBTx DB to reset
+GBTx ASIC.
+Follow the \autoref{fig:gbtx-reset} to reset GBTx ASIC.
 
 \begin{figure}[!ht]
 \centering
@@ -23,7 +25,7 @@ Follow the \autoref{fig:gbtx-reset} to reset GBTx boards.
     \draw [black,fill] (0.25,-0.25) circle [radius=0.1];
 \end{tikzpicture}
 \caption{
-    Schematic for resetting GBTx boards. A jumper should be used to connect the
+    Schematic for resetting GBTx ASIC. A jumper should be used to connect the
     two pins marked above.
 }
 \label{fig:gbtx-reset}

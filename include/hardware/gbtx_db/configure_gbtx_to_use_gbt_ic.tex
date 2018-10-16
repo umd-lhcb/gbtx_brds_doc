@@ -1,18 +1,17 @@
-\subsubsection{Configure GBTx to use GBT-IC channel}
-It might be useful to read/write \emph{individual} registers from/to a GBTx
-board.
+\subsubsection{Configure GBTx DB to use GBT-IC channel}
+It might be useful to read/write \emph{individual} registers from/to a GBTx DB.
 In this case, follow the \autoref{fig:gbt-ic} to flip the \texttt{configSelect}
 switch.
 
 \begin{leftbar}
     Normally this should be unjumped, because we use the SCA \itwoc channel from
-    the master board to communicate with the slave.
+    the master DB to communicate with the slave.
 \end{leftbar}
 
 \begin{leftbar}
     Flip the \texttt{configSelect} switch will render the external \itwoc
     adapter ineffective.
-    None of the GBTx register value is fused onto the board, so a GBTx board in
+    None of the GBTx register value is fused onto the board, so a GBTx DB in
     our lab must always be programmed externally via \itwoc before flipping the
     switch.
 \end{leftbar}
