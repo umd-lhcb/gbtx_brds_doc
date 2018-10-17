@@ -31,12 +31,12 @@ adapter\footnote{
     % I2C SCL
     \draw [red,fill] (0.25,-0.25) circle [radius=0.1];
     \draw [red,thick] (0.25,-0.25)
-        to [out=10,in=190] (5,-1) node [right] {\texttt{I2C SCL}};
+        to [out=10,in=190] (5,-1.5) node [right] {\texttt{I2C SCL}};
 
     % I2C SDA
-    \draw [blue,fill] (-0.25,-0.25) circle [radius=0.1];
-    \draw [blue,thick] (1.75,-0.25)
-        to [out=-70,in=190] (5,-1.5) node [right] {\texttt{I2C SDA}};
+    \draw [blue,fill] (0.25,0.25) circle [radius=0.1];
+    \draw [blue,thick] (0.25,0.25)
+        to [out=10,in=190] (5,-1) node [right] {\texttt{I2C SDA}};
 \end{tikzpicture}
 \caption{
     \itwoc adapter can be connected on the DCB mainboard to access all 6 data
