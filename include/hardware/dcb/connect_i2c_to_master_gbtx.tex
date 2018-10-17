@@ -1,4 +1,4 @@
-\subsubsection{Configure GBTx DB to use external \itwoc adapter}
+\subsubsection{Connect \itwoc adapter to DCB master GBTx}
 A FFC breakout board is needed to connect \itwoc adapter to the DCB GBTx master.
 Follow \autoref{fig:dcb_mc_i2c} to connect an external \itwoc adapter.
 
@@ -30,11 +30,17 @@ Follow \autoref{fig:dcb_mc_i2c} to connect an external \itwoc adapter.
     \draw (1.75,-0.5) -- (1.75,-0.7);
     \draw (2.25,-0.5) -- (2.25,-0.7);
 
+    \draw (0.25,-0.7) -- (1,-1.45);
+    \draw (0.75,-0.7) -- (1.5,-1.45);
+    \draw (1.25,-0.7) -- (2,-1.45);
+    \draw (1.75,-0.7) -- (2.5,-1.45);
+    \draw (2.25,-0.7) -- (3,-1.45);
+
     % Helper labels (imaginary)
     \coordinate (B) at (0,0.25);
     \node at (B) [left] {\small\texttt{1}};
 
-    % Single cable on the I2C
+    % GND
     %\draw [black,fill] (0.25,0.25) circle [radius=0.1];
     %\draw [thick] (0.25,0.25)
         %to [out=10,in=190] (5,-1) node [right]
