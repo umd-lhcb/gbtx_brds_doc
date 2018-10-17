@@ -18,20 +18,20 @@ Follow \autoref{fig:external_i2c} to connect an external \itwoc adapter.
     \coordinate (B) at (0,-0.25);
     \node at (B) [left] {\small\texttt{1}};
 
-    % Single cable on the I2C
+    % I2C GND
     \draw [black,fill] (0.25,0.25) circle [radius=0.1];
     \draw [thick] (0.25,0.25)
-        to [out=10,in=190] (5,-1) node [right]
-        {To single cable};
+        to [out=10,in=190] (5,-1) node [right] {\texttt{GND}};
 
-    % 2x1 connector on the I2C
-    \draw [black,fill] (0.25,-0.25) circle [radius=0.1];
-    \draw [black,fill] (0.75,-0.25) circle [radius=0.1];
-    \draw [thick] (0.25,-0.25) to [out=-80,in=120] (1,-1);
-    \draw [thick] (0.75,-0.25) to [out=-90,in=130] (1,-1);
-    \draw [thick] (1,-1)
-        to [out=-50,in=170] (5,-2) node [right]
-        {To 2x1 connector};
+    % I2C SCL
+    \draw [red,fill] (0.25,-0.25) circle [radius=0.1];
+    \draw [red,thick] (0.25,-0.25) to [out=-80,in=120] (5,-2)
+        node [right] {\texttt{I2C SCL}};
+
+    % I2C SDA
+    \draw [blue,fill] (0.75,-0.25) circle [radius=0.1];
+    \draw [blue,thick] (0.75,-0.25) to [out=-90,in=130] (5,-2.5)
+        node [right] {\texttt{I2C SDA}};
 \end{tikzpicture}
 \caption{Schematic for external \itwoc adapter setup.}
 \label{fig:external_i2c}
