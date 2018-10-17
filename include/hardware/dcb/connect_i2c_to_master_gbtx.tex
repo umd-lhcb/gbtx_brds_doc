@@ -41,20 +41,24 @@ Follow \autoref{fig:dcb_mc_i2c} to connect an external \itwoc adapter.
     \node at (B) [left] {\small\texttt{1}};
 
     % GND
-    %\draw [black,fill] (0.25,0.25) circle [radius=0.1];
-    %\draw [thick] (0.25,0.25)
-        %to [out=10,in=190] (5,-1) node [right]
-        %{To single cable};
+    \draw [black,fill] (1.75,0.25) circle [radius=0.1];
+    \draw [thick] (1.75,0.25)
+        to [out=10,in=190] (5,-1) node [right] {\texttt{GND}};
 
-    %% 2x1 connector on the I2C
-    %\draw [black,fill] (0.25,-0.25) circle [radius=0.1];
-    %\draw [black,fill] (0.75,-0.25) circle [radius=0.1];
-    %\draw [thick] (0.25,-0.25) to [out=-80,in=120] (1,-1);
-    %\draw [thick] (0.75,-0.25) to [out=-90,in=130] (1,-1);
-    %\draw [thick] (1,-1)
-        %to [out=-50,in=170] (5,-2) node [right]
-        %{To 2x1 connector};
+    % I2C SCL
+    \draw [red,fill] (2.25,-0.25) circle [radius=0.1];
+    \draw [red,thick] (2.25,-0.25)
+        to [out=10,in=190] (5,-2) node [right] {\texttt{I2C SCL}};
+
+    % I2C SDA
+    \draw [blue,fill] (1.75,-0.25) circle [radius=0.1];
+    \draw [blue,thick] (1.75,-0.25)
+        to [out=-70,in=190] (5,-2.5) node [right] {\texttt{I2C SDA}};
 \end{tikzpicture}
-\caption{Schematic for external \itwoc adapter setup.}
+\caption{
+    \itwoc adapter needs to be connected on DCB master FFC breakout board.
+    Pay attention to the implied orientation of the breakout board, as it is
+    helpful to locate pin 1.
+}
 \label{fig:dcb_mc_i2c}
 \end{figure}
