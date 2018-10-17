@@ -1,0 +1,20 @@
+\subsection{Flip MiniDAQ Tx polarity}
+Due to a design flaw of the pilot DCB, its input polarity is flipped.
+We can workaround this issue by flipping the MiniDAQ Tx polarity on certain
+channels.
+
+To do that, open the FSM main panel, then click \textbf{LLI...}.
+A panel similar to \autoref{fig:minidaq-lli} should show up.
+Tick channels that should have their polarity flipped, then click \textbf{Apply}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{res/flip_tx_polarity_in_minidaq.png}
+    \caption{MiniDAQ LLI panel for flipping Tx polarity.}
+    \label{fig:minidaq-lli}
+\end{figure}
+
+\begin{leftbar}
+    This setting is \emph{non-persistent}!
+    Please re-apply desired settings to MiniDAQ after each reboot.
+\end{leftbar}
