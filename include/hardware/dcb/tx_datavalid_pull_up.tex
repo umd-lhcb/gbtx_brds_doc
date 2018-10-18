@@ -1,15 +1,15 @@
-\subsubsection{Manually pull up \texttt{TX\_RDY}}
-DCB pilot boards have a design flaw that prevents them pulling up
-\texttt{TX\_RDY} automatically.
+\subsubsection{Manually pull up \texttt{TX\_DATAVALID}}
+DCB pilot boards do not have pull-up resistor to pull up \texttt{TX\_DATAVALID}
+automatically.
 This would prevent PRBS tests, since without it pulling up, MiniDAQ would
 consider data frames as ``invalid''\footnote{
-    Which is not really the case, as all \texttt{TX\_RDY} does is flip single
-    bit 0 to 1 on the header part of the data frame.
+    Which is not really the case, as all \texttt{TX\_DATAVALID} does is flip
+    single bit 0 to 1 on the header part of the data frame.
 }.
 
-A large ($\approx$ 5~k$\Omega$) resistor is connected to the \emph{data GBTx}
-FFC breakout boards.
-See \autoref{fig:dcb_tx_rdy_pull_up} for connection details.
+A large ($\approx$ 5~k$\Omega$) resistor is connected between the \emph{data
+GBTx} FFC breakout board \texttt{TX\_DATAVALID} pin and 1.5~V rail.
+See \autoref{fig:dcb_tx_datavalid_pull_up} for connection details.
 
 \begin{figure}[!ht]
 \centering
@@ -49,14 +49,21 @@ See \autoref{fig:dcb_tx_rdy_pull_up} for connection details.
     \coordinate (B) at (2.5,-0.25);
     \node at (B) [right] {\small\texttt{40}};
 
-    % Two pins that needs to be connected
+    % TX_DATAVALID pin
     \draw [black,fill] (1.75,-0.25) circle [radius=0.1];
-    \draw [black,fill] (1.25,-0.25) circle [radius=0.1];
+    \draw [black,thick] (1.75,-0.25) to [out=-130,in=180] (2,-1.5) node {};
+    \draw (2,-1.4) rectangle (2.5,-1.6);
+    \draw [black,thick] (2.5,-1.5) to [out=0,in=0] (3,-1.5)
+        node [right] {\texttt{1.5~V}};
+
+    % Resistor label
+    \coordinate (A) at (2.25,-1.6);
+    \node at (A) [below] {\tiny\texttt{R $\approx$ 5~k$\Omega$}};
 \end{tikzpicture}
 \caption{
-    Connect the two pins marked above with a large resistor to pull up
-    \texttt{TX\_RDY}.
+    Manually pull up \texttt{TX\_DATAVALID} with a large resistor connected to
+    1.5~V rail.
     Pay attention to the orientation of the FFC breakout board.
 }
-\label{fig:dcb_tx_rdy_pull_up}
+\label{fig:dcb_tx_datavalid_pull_up}
 \end{figure}
