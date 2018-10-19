@@ -25,12 +25,14 @@
     columns=flexible
 }
 
-\usepackage{placeins}
 % Figures can only float within its *subsection*
+\usepackage{placeins}
 \makeatletter
 \AtBeginDocument{%
     \expandafter\renewcommand\expandafter\subsection\expandafter
         {\expandafter\@fb@secFB\subsection}%
+    \expandafter\renewcommand\expandafter\section\expandafter
+        {\expandafter\@fb@secFB\section}%
     \newcommand\@fb@secFB{\FloatBarrier
         \gdef\@fb@afterHHook{\@fb@topbarrier \gdef\@fb@afterHHook{}}}%
     \g@addto@macro\@afterheading{\@fb@afterHHook}%
