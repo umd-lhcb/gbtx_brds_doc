@@ -67,3 +67,67 @@ See \autoref{fig:dcb_tx_datavalid_pull_up} for connection details.
 }
 \label{fig:dcb_tx_datavalid_pull_up}
 \end{figure}
+
+An easier to implement, but not recommended way is listed in
+\autoref{fig:dcb_tx_datavalid_pull_up_alt}.
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}
+    % Pins
+    \draw (0,0) rectangle (0.5,0.5);
+    \draw (0.5,0) rectangle (1,0.5);
+    \draw (1,0) rectangle (1.5,0.5);
+    \draw (1.5,0) rectangle (2,0.5);
+    \draw (2,0) rectangle (2.5,0.5);
+
+    \draw (0,-0.5) rectangle (0.5,0);
+    \draw (0.5,-0.5) rectangle (1,0);
+    \draw (1,-0.5) rectangle (1.5,0);
+    \draw (1.5,-0.5) rectangle (2,0);
+    \draw (2,-0.5) rectangle (2.5,0);
+
+    % Extension lines
+    \draw [dashed] (0,0.5) -- (-1.5,0.5);
+    \draw [dashed] (0,0) -- (-1.5,0);
+    \draw [dashed] (0,-0.5) -- (-1.5,-0.5);
+
+    % Additional copper traces
+    \draw (0.25,-0.5) -- (0.25,-0.7);
+    \draw (0.75,-0.5) -- (0.75,-0.7);
+    \draw (1.25,-0.5) -- (1.25,-0.7);
+    \draw (1.75,-0.5) -- (1.75,-0.7);
+    \draw (2.25,-0.5) -- (2.25,-0.7);
+
+    \draw (0.25,-0.7) -- (-0.5,-1.45);
+    \draw (0.75,-0.7) -- (0,-1.45);
+    \draw (1.25,-0.7) -- (0.5,-1.45);
+    \draw (1.75,-0.7) -- (1,-1.45);
+    \draw (2.25,-0.7) -- (1.5,-1.45);
+
+    % Helper labels (imaginary)
+    \coordinate (B) at (2.5,-0.25);
+    \node at (B) [right] {\small\texttt{40}};
+
+    % TX_DATAVALID pin and TX_RDY pin
+    \draw [black,fill] (1.25,-0.25) circle [radius=0.1];
+    \draw [black,fill] (1.75,-0.25) circle [radius=0.1];
+
+    % Pull-up resistor, and its connection
+    \draw (1.25,1.9) rectangle (1.75,2.1);
+    \draw [black,thick] (1.25,-0.25) to [out=160,in=180] (1.25,2) node {};
+    \draw [black,thick] (1.75,2) to [out=0,in=20] (1.75,-0.25) node {};
+
+    % Resistor label
+    \coordinate (A) at (1.5,1.9);
+    \node at (A) [below] {\tiny\texttt{R $\approx$ 5 k$\Omega$}};
+\end{tikzpicture}
+\caption{
+    Manually pull up \texttt{TX\_DATAVALID} with a large resistor.
+    Here we are lazy, because we are using \texttt{TX\_RDY} to provide 1.5 V.
+    This is strictly not recommended, but it works, and it creates less clutter
+    in the setup.
+    Pay attention to the orientation of the FFC breakout board.
+}
+\label{fig:dcb_tx_datavalid_pull_up_alt}
+\end{figure}
