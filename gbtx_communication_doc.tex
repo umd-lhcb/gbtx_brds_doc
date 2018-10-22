@@ -43,6 +43,23 @@
 \usepackage{chngcntr}
 \counterwithin{figure}{subsection}
 
+% For FAQ
+\newcounter{question}
+\setcounter{question}{0}
+\newcounter{answer}
+\setcounter{answer}{0}
+
+\newcommand\Que[1]{%
+   \stepcounter{question}%
+   \noindent%
+   \par\textbf{Q\thequestion.} \emph{#1}}\par%
+
+\newcommand\Ans[1]{%
+    \stepcounter{answer}%
+    \noindent%
+    \par\textbf{A\theanswer.} #1}\par%
+
+% Better typesetted 'I2C'
 \def\itwoc{I{$\scriptstyle^2$}C\ }
 \newcommand\symbolwithin[2]{%
     {\mathmakebox[\widthof{\ensuremath{{}#2{}}}][c]{{#1}}}}
@@ -88,7 +105,7 @@
 \section*{Appendices}
 \addcontentsline{toc}{section}{Appendices}
 \renewcommand{\thesubsection}{\Alph{subsection}}
-\input{include/appendices/fix_gbt_server_error.tex}
+\input{include/appendices/faq.tex}
 \input{include/appendices/bypass_components_in_gbt_data_path.tex}
 \input{include/appendices/prbs_tests.tex}
 \input{include/appendices/gbtx_operation_modes.tex}
