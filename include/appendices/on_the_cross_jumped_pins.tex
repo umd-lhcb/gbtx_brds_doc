@@ -1,0 +1,22 @@
+\subsection{On the cross-jumped DCB pins}
+\label{sec:cross_jumper}
+Upon receiving DCB boards, one should notice a pair of (handmade) wire on the
+board that cross-jump the \texttt{J12} configurator, as shown in
+\autoref{fig:cross_jumper}.
+
+Due to a design oversight, we flipped the \texttt{SCL} and \texttt{SDA}
+connections, so we have to cross jump them.
+This will be fixed in final production board.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{res/cross_jumper.jpg}
+    \caption{MiniDAQ LLI panel for flipping Tx polarity.}
+    \label{fig:cross_jumper}
+\end{figure}
+
+\begin{leftbar}
+    These cables may fail.
+    If one cannot program data GBTxs with GBT client, check the resistance of
+    these cables.
+\end{leftbar}
