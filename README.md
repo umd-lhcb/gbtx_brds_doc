@@ -6,7 +6,7 @@ configuration files used for GBT DB/DCB testing.
 This project utilizes the Travis CI to build and release new pdf files on new tags.
 Alternatively, one can clone/download this repository and build pdf files locally with:
 ```
-make pdf
+make all
 ```
 
 If it's your first time to build this project, please create a `build`

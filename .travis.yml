@@ -22,7 +22,7 @@ script:
     - cp ./ci/post-xxx-sample.txt ./.git/hooks/post-checkout
     - chmod +x ./.git/hooks/post-checkout
     - git checkout
-    - tectonic ./gbtx_communication_doc.tex --print
+    - tectonic ./gbtx_communication_doc.tex
 
 deploy:
     provider: releases
