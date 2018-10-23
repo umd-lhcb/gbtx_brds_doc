@@ -45,6 +45,9 @@ master GBTx (See \autoref{fig:dcb_mc_reset}).
 
     % RESET
     \draw [black,fill] (1.25,-0.25) circle [radius=0.1];
+
+    % Connect GND and RESET
+    \draw [thick] (1.25,-0.25) to [out=80,in=140] (2.25,0.25) node {};
 \end{tikzpicture}
 \caption{
     Connect the two pins marked above with a jumper/wire to reset DCB master
