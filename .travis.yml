@@ -36,6 +36,9 @@ deploy:
         - "./config/slave-Tx.txt"
         - "./config/slave-Tx-wrong_termination.txt"
         - "./config/slave-Tx-reduced_eports.txt"
+        - "./schematics/schematic-gbtx_db.pdf"
+        - "./schematics/schematic-dcb_pilot.pdf"
+        - "./schematics/schematic-dcb_opt_mezz.pdf"
     skip_cleanup: true
     on:
         tags: true
