@@ -1,4 +1,4 @@
-# GBTx communication documentation [![Build status](https://travis-ci.com/ypsun-umd/gbtx_communication_doc.svg?master)](https://travis-ci.com/ypsun-umd)
+# GBTx communication documentation [![Build status](https://travis-ci.com/yipengsun/gbtx_communication_doc.svg?master)](https://travis-ci.com/yipengsun)
 An effort to record GBTx board setups at UMD LHCb group. We also include all
 configuration files used for GBT DB/DCB testing.
 
