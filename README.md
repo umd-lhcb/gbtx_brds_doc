@@ -6,8 +6,12 @@ configuration files used for GBT DB/DCB testing.
 This project utilizes the Travis CI to build and release new pdf files on new tags.
 Alternatively, one can clone/download this repository and build pdf files locally with:
 ```
+cp ./ci/post-xxx-sample.txt ./.git/hooks/post-checkout
+chmod +x ./.git/hooks/post-checkout
+git checkout  # this is to generate required version info
 make all
 ```
+note that prior to the build, LaTeX package dependencies need to be installed.
 
 If it's your first time to build this project, please create a `build`
 directory under the project root.
