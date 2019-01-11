@@ -1,29 +1,29 @@
 # Author: Yipeng Sun <syp at umd dot edu>
 #
 # Based on: https://tex.stackexchange.com/questions/40738/how-to-properly-make-a-latex-project
-# Last Change: Thu Oct 25, 2018 at 12:44 PM -0400
+# Last Change: Fri Jan 11, 2019 at 05:36 AM -0500
 
 # Set default programs for compiling and archiving
 MAKE_TEX	:=	lualatex
-ZIP_FILE	:=	gbtx_communication_doc.zip
+ZIP_FILE	:=	gbtx_brds_doc.zip
 
 # Detect changes for included latex files
 ASSET_DIRS = $(shell find include/ -type d)
 ASSET_FILES = $(shell find include/ -type f -name '*.tex')
 
 # We assume if the generated file is newer than the source, then it is good enough.
-.PHONY: all clean pack GBTX_DB_TEX
+.PHONY: all clean pack
 
-all: gbtx_communication_doc.pdf
+all: gbtx_brds_doc.pdf
 
-gbtx_communication_doc.pdf: gbtx_communication_doc.tex .git/gitHeadInfo.gin $(ASSET_DIRS) $(ASSET_FILES)
+gbtx_brds_doc.pdf: gbtx_brds_doc.tex .git/gitHeadInfo.gin $(ASSET_DIRS) $(ASSET_FILES)
 	@latexmk -pdf \
 		-pdflatex="$(MAKE_TEX) -interaction=nonstopmode -synctex=1" \
 		-use-make \
-		-jobname=build/gbtx_communication_doc \
-		gbtx_communication_doc
-	@mv build/gbtx_communication_doc.pdf .
-	@mv build/gbtx_communication_doc.synctex.gz .
+		-jobname=build/gbtx_brds_doc \
+		gbtx_brds_doc
+	@mv build/gbtx_brds_doc.pdf .
+	@mv build/gbtx_brds_doc.synctex.gz .
 
 clean:
 	@rm -rf build/*
