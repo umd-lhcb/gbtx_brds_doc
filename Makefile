@@ -1,7 +1,7 @@
 # Author: Yipeng Sun <syp at umd dot edu>
 #
 # Based on: https://tex.stackexchange.com/questions/40738/how-to-properly-make-a-latex-project
-# Last Change: Fri Jan 11, 2019 at 05:36 AM -0500
+# Last Change: Fri Jan 11, 2019 at 06:06 AM -0500
 
 # Set default programs for compiling and archiving
 MAKE_TEX	:=	lualatex
@@ -15,6 +15,9 @@ ASSET_FILES = $(shell find include/ -type f -name '*.tex')
 .PHONY: all clean pack
 
 all: gbtx_brds_doc.pdf
+
+.git/gitHeadInfo.gin:
+	@git checkout
 
 gbtx_brds_doc.pdf: gbtx_brds_doc.tex .git/gitHeadInfo.gin $(ASSET_DIRS) $(ASSET_FILES)
 	@latexmk -pdf \
