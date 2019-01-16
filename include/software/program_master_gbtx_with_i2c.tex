@@ -9,12 +9,15 @@ All GBTx configuration files are publicly available at
 \url{https://github.com/ypsun-umd/gbtx_communication_doc/releases}.
 Always use latest release.
 
-It is recommended to use the latest version of \textbf{GBTX programmer} provided by
-CERN\footnote{
+It is recommended to use the latest version of \textbf{GBTX programmer} provided
+by CERN\footnote{
     Latest release can be found in CERN gitlab:
     \url{https://gitlab.cern.ch/gbtproj/gbtxprogrammer/tree/master/releases}.
     CERN credential needed to access the content.
 }.
+
+Launch the programmer, a typical UI is shown in
+\autoref{fig:gbtx-programmer-ui}.
 
 \begin{figure}[!ht]
     \centering
@@ -25,30 +28,16 @@ CERN\footnote{
 
 Click \textbf{Import image} and load a configuration file, then click
 \textbf{Write GBTX} to write to master GBTx via \itwoc.
+Don't forget to check the status of the GBTx by clicking \textbf{Read GBTX}.
+If programmed correctly, the returned value should be:
+
+\begin{lstlisting}
+18: Idle
+\end{lstlisting}
 
 \begin{leftbar}
     During DCB pilot testing, at least one DCB could not be programmed by the
     latest version of GBTX Programer: It would get stuck in state 10.
     In that case, please revert back to GBTX Programer v1.
+    See \nameref{appx:legacy-gbtx-programmer} for more details.
 \end{leftbar}
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.9\textwidth]{res/gbtx_programmer_v1_ui.png}
-    \caption{Main UI of GBTX programmer, version 1.}
-    \label{fig:gbtx-programmer-ui}
-\end{figure}
-
-Launch the programmer, a typical UI is shown in
-\autoref{fig:gbtx-programmer-ui},
-Click \textbf{Load GBTX configuration} and load a configuration file, which is
-
-Then click \textbf{Write ALL to the GBTX}. Check the returned message to make
-sure everything works (supposedly).
-Now click \textbf{Read state}.
-If the master GBTx is configured correctly and is connected to a working
-MiniDAQ, the return value should be:
-
-\begin{lstlisting}
-24 (dec): Idle (normal status when running)
-\end{lstlisting}
