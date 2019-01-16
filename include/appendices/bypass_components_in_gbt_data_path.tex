@@ -12,9 +12,11 @@ input/output path.
 The register \texttt{0x1c} and 3 subsequent registers control the output path;
 \texttt{0x2d} controls the input path.
 Each of the paths have 3 configurable selectors, each has 4 operations modes
-($0_{10} - 3_{10}$\footnote{The subscript indicates the base.},
-which translate to $0_2 - 11_2$). According to \autoref{fig:gbt-data-path}, the
-control sequence should be given in:
+($0_{10} - 3_{10}$, which translate to $0_2 - 11_2$)\footnote{
+    The subscript indicates the base.
+}.
+According to \autoref{fig:gbt-data-path}, the control sequence should be given
+in:
 
 \begin{lstlisting}
 TXSwitch2 -> TXSwitch1 -> TXSwitch0
