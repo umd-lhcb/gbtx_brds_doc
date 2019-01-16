@@ -26,8 +26,11 @@ Launch the programmer, a typical UI is shown in
     \label{fig:gbtx-programmer-ui}
 \end{figure}
 
-Click \textbf{Import image} and load a configuration file, then click
-\textbf{Write GBTX} to write to master GBTx via \itwoc.
+Click \textbf{Import image} and load a configuration file\footnote{
+    For master GBTx, imported configuration filename should start with
+    \texttt{master}. Typically, \texttt{master.txt} is used.
+},
+then click \textbf{Write GBTX} to write to master GBTx via \itwoc.
 Don't forget to check the status of the GBTx by clicking \textbf{Read GBTX}.
 If programmed correctly, the returned value should be:
 
