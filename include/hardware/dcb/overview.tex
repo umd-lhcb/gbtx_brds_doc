@@ -3,18 +3,25 @@ Data control boards (DCB) are intended to be a part of the LHCb upstream tracker
 upgrade.
 There is one master GBTx ASIC, and 6 data GBTx ASICs per board.
 DCB is much less flexible than GBTx DB because it serves only one purpose:
-Receive SALT elink data then transmit that data to the counting room.
+Receive SALT\footnote{
+    Another ASIC designed by the LHCb collaboration that will be installed
+    closest to beam pipe. These ASICs will be used for tracking. Refer to
+    \url{https://twiki.cern.ch/twiki/bin/view/LHCb/StripAsic}
+    for more details about SALT.
+} elink data then transmit that data to the counting room.
 
 So far, we have been able to repeat PRBS test on DCBs:
 Programming the master, then programming data GBTxs, then instruct them to
-generate PRBS data, and verify generated data by MiniDAQ.
+generate PRBS (see \nameref{appx:prbs}) data, and verify generated data by
+MiniDAQ.
 
 \autoref{fig:dcb_layout} shows the layout of an actual DCB board.
 %GBTx ASICs layout are marked on the figure directly.
 Optical fiber grouping are marked by the \texttt{OMDBXX} label. For example,
 \texttt{OMDB23} means that data GBTxs 2 and 3 are connected to this mezzanine.
 
-A DCB requires 4 optical mezzanines (not shown here) to function properly.
+A DCB requires 4 optical mezzanines (shown in \autoref{fig:opt_mezz}) to
+function properly.
 As said above, DCB is less flexible, and there will be only \emph{one}
 configuration for DCBs.
 All DCBs shipped by UMD LHCb group will have its hardware jumpers
@@ -53,4 +60,10 @@ pre-configured.
 \end{tikzpicture}
 \caption{Pilot-run DCB layout.}
 \label{fig:dcb_layout}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{res/opt_mezz_with_vttx.png}
+\caption{An optical mezzanine with VTTx optical module installed.}
 \end{figure}
