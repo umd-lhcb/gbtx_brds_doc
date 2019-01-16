@@ -1,4 +1,6 @@
 \subsection{Program slave GBTx with configuration files}
+For slave (data) GBTxs, configuration filename should start with \texttt{slave}.
+Typically, \texttt{slave-Tx.txt} is used.
 Configure the parameter as shown in \autoref{fig:gbt-file}.
 
 \begin{figure}[ht]
@@ -11,11 +13,9 @@ Configure the parameter as shown in \autoref{fig:gbt-file}.
 The configuration file should be supplied to the \textbf{Data in} field with the
 following syntax:
 
-\begin{minipage}{\textwidth}
 \begin{lstlisting}
 file:<path_to_configuration_file>
 \end{lstlisting}
-\end{minipage}
 
 \begin{leftbar}
     This is equivalent to program the slave with an external \itwoc adapter.
