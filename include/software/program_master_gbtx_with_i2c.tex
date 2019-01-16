@@ -1,5 +1,5 @@
 \subsection{Program master GBTx with external \itwoc adapter}
-Before proceed, for GBTx DB, follow the instruction on
+Before proceeding, for GBTx DB, follow the instructions on
 \autoref{sec:hardware-ext-i2c} to configure the hardware;
 for DCB, connect \itwoc adapter to the GBTx master FFC breakout board, or DCB
 mainboard as described on \autoref{sec:dcb-master-i2c} or
@@ -9,7 +9,7 @@ All GBTx configuration files are publicly available at
 \url{https://github.com/ypsun-umd/gbtx_communication_doc/releases}.
 Always use latest release.
 
-It is recommended to use latest version of \textbf{GBTX programmer} provided by
+It is recommended to use the latest version of \textbf{GBTX programmer} provided by
 CERN\footnote{
     Latest release can be found in CERN gitlab:
     \url{https://gitlab.cern.ch/gbtproj/gbtxprogrammer/tree/master/releases}.
@@ -27,8 +27,8 @@ Click \textbf{Import image} and load a configuration file, then click
 \textbf{Write GBTX} to write to master GBTx via \itwoc.
 
 \begin{leftbar}
-    During DCB pilot testing, at least one DCB cannot be programmed by the
-    latest version of GBTX Programer: It would stuck in state 10.
+    During DCB pilot testing, at least one DCB could not be programmed by the
+    latest version of GBTX Programer: It would get stuck in state 10.
     In that case, please revert back to GBTX Programer v1.
 \end{leftbar}
 
