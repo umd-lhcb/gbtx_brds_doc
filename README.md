@@ -13,9 +13,6 @@ make all
 ```
 note that prior to the build, LaTeX package dependencies need to be installed.
 
-If it's your first time to build this project, please create a `build`
-directory under the project root.
-
 ## Configuration files
 Below we list usage of some of the configuration files.
 
