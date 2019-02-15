@@ -19,4 +19,4 @@ Below we list usage of some of the configuration files.
 * `master.txt`: For DCB master GBTx. We have enabled watchdog and timeout.
 * `slave-Tx.txt`: For DCB data GBTxs. We terminate all E-groups with `0x11`.
 * `slave-Tx-wrong_termination.txt`: For DCB data GBTxs. We terminate with `0xff`.
-* `slave-Tx-reduced_eports.txt`: For DCB data GBTxs. Only E-group 0-4 are enabled.
+* `slave-Tx-reduced_egroups.txt`: For DCB data GBTxs. Only E-group 0-4 are enabled.
