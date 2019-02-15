@@ -28,7 +28,7 @@ deploy:
         - "./config/slave-TRx.txt"
         - "./config/slave-Tx.txt"
         - "./config/slave-Tx-wrong_termination.txt"
-        - "./config/slave-Tx-reduced_eports.txt"
+        - "./config/slave-Tx-reduced_egroups.txt"
     skip_cleanup: true
     on:
         tags: true
