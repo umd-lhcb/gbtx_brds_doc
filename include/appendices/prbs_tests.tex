@@ -42,6 +42,12 @@ can reproduce the exact behavior:
 All loopback channels go green, instead of error out.
 We deem it acceptable, at least for the time being.
 
+\begin{leftbar}
+    Note that when setting register \texttt{0x1c} to \texttt{03}, we are telling
+    GBTx to generate a PRBS. Sometimes, it is useful to generate a fixed
+    pattern. To do that, we write \texttt{01} to register \texttt{0x1c}.
+\end{leftbar}
+
 \paragraph{Test 2.}
 This is a loopback test.
 Here MiniDAQ would generate PRBS data and these data packets will be untouched
