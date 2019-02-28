@@ -21,9 +21,8 @@ following panel shows up (see \autoref{fig:mem-monitor}), then go to the
 \end{figure}
 
 Each line is a received GBT packet. The test elink data is represented by a
-single Byte:
+single Byte, with test elink Byte marked as red:
 
-\begin{lstlisting}
-800CFFF5 FFFF41FF FFFFFFFF FF000000
-             ^^ test elink Byte
+\begin{lstlisting}[escapechar=@]
+800CFFF5 FFFF@\color{red}{41}@FF FFFFFFFF FF000000
 \end{lstlisting}
