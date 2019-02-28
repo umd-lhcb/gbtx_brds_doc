@@ -1,0 +1,18 @@
+\subsection{Watchdog and timeout}
+According to GBTX manual, watchdog will monitor the state of each sub-block, and
+will reset any malfunctioning sub-block; timeout treats sub-blocks that don't
+report a state back (after 2 seconds) as malfunctioning.
+
+\begin{leftbar}
+    Timeout is applied to the following states:
+    \texttt{waitXPLLLock}, \texttt{waitDESLock}, \texttt{waitRXEPLLLock},
+    \texttt{waitSERLock}, \texttt{waitTXEPLLLock}, \texttt{waitdllLocked}.
+\end{leftbar}
+
+Watchdog is enabled by setting 2-0 bits in register \texttt{0x32} (decimal 50)
+to ``111''. Timeout is enabled by setting 5-3 bits in register \texttt{0x34}
+(decimal 52) to ``111''.
+
+In the provided \texttt{master-*.txt} configurations, both watchdog and timeout
+are enabled by default. Register \texttt{0x32} has a default value of
+\texttt{0x7}, \texttt{0x34} has a default value of \texttt{0x3f}.
