@@ -11,23 +11,14 @@ To perform a readout, first follow \autoref{fig:adc-current-channel} to enable
 current source of the channels to readout,
 then follow \autoref{fig:adc-readout} to readout a voltage of that channel.
 
-It is important to note that we \emph{should} only enable current source for the
-channels that are about to be read.
-The correspondence between register bits and the channel they control are listed
-in \autoref{tab:register-channel-correspondence}.
-Also, \textbf{Version} must be set to \textbf{2}, \textbf{Address} must be set
-to the desired command, and \textbf{Line} must be set to the desired channel to
-be probed.
-
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{res/gbt_client_adc_readout_currentsource.png}
     \caption{
         Parameters to send a command to the SCA to activate 100 $\mu$A current
         sources for specific channels.
-        Since we are using SCAv2, it is OK to enable current source on every
-        channel (thus the \texttt{0xFFFFFFFF} in \textbf{Current Source}
-        setting).
+        For SCAv2, it is OK to enable current source on every channel (thus the
+        \texttt{0xFFFFFFFF} in \textbf{Current Source} setting).
     }
     \label{fig:adc-current-channel}
 \end{figure}
@@ -57,7 +48,15 @@ be probed.
     \includegraphics[width=0.9\textwidth]{res/gbt_client_adc_readout_readchannel.png}
     \caption{
         Parameters to send a command to the SCA to read the voltage on the
-        channel specified by the given line
+        channel specified by the given line.
     }
     \label{fig:adc-readout}
 \end{figure}
+
+It is important to note that we \emph{should} only enable current source for the
+channels that are about to be read.
+The correspondence between register bits and the channel they control are listed
+in \autoref{tab:register-channel-correspondence}.
+Also, \textbf{Version} must be set to \textbf{2}, \textbf{Address} must be set
+to the desired command, and \textbf{Line} must be set to the desired channel to
+be probed.
