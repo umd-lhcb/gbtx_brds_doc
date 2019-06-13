@@ -23,7 +23,7 @@ then follow \autoref{fig:adc-readout} to readout a voltage of that channel.
     \label{fig:adc-current-channel}
 \end{figure}
 
-\begin{center}
+\begin{table}[ht]
     \begin{tabular}{cccc}
         \toprule
         ADC channel & Signal name & Line & Register setting \\
@@ -36,12 +36,12 @@ then follow \autoref{fig:adc-readout} to readout a voltage of that channel.
         \texttt{CH 31} & Internal SCA Thermistor      & ?  & ? \\
         \bottomrule
     \end{tabular}
-    \captionof{table}{
+    \caption{
         Correspondence between control register bits and the channels they
         control.
     }
     \label{tab:register-channel-correspondence}
-\end{center}
+\end{table}
 
 \begin{figure}[ht]
     \centering
