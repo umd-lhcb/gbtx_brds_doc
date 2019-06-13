@@ -19,16 +19,16 @@
         \addlegendentry{Manufacturer}
 
         \addplot table [x index=7, y index=6, col sep=comma] {res/thermistor_readout_temp_vals.csv};
-        \addlegendentry{After fix, temperature increasing}
+        \addlegendentry{After fix, run 1}
 
         \addplot table [x index=10, y index=9, col sep=comma] {res/thermistor_readout_temp_vals.csv};
-        \addlegendentry{After fix, temperature decreasing}
+        \addlegendentry{After fix, run 2}
 
         \addplot table [x index=13, y index=12, col sep=comma] {res/thermistor_readout_temp_vals.csv};
-        \addlegendentry{Heat gun 1}
+        \addlegendentry{Heat gun, temperature increasing}
 
         \addplot table [x index=16, y index=15, col sep=comma] {res/thermistor_readout_temp_vals.csv};
-        \addlegendentry{Heat gun 2}
+        \addlegendentry{Heat gun, temperature decreasing}
     \end{axis}
 \end{tikzpicture}
 \caption{
