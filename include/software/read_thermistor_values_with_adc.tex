@@ -57,6 +57,15 @@ It is important to note that we \emph{should} only enable current source for the
 channels that are about to be read.
 The correspondence between register bits and the channel they control are listed
 in \autoref{tab:register-channel-correspondence}.
+The 8-byte register controls a total of 32 ADC channels, with each channel
+controlled by a single \emph{bit}:
+
+\begin{itemize}
+    \item bit 1-2: control line 7-0, with the rightmost bit controlling line 0.
+    \item bit 3-4: control line 15-8, rightmost bit controlling line 8.
+    \item So on and so forth.
+\end{itemize}
+
 Also, \textbf{Version} must be set to \textbf{2}, \textbf{Address} must be set
 to the desired command, and \textbf{Line} must be set to the desired channel to
 be probed.
