@@ -28,7 +28,7 @@ then follow \autoref{fig:adc-readout} to readout a voltage of that channel.
         \toprule
         ADC channel & Signal name & Line & Register setting \\
         \midrule
-        \texttt{CH 00} & \texttt{DC\_PLAT\_RTD\_A}    & 0  & Always on \\
+        \texttt{CH 00} & \texttt{DC\_PLAT\_RTD\_A}    & 0  & \texttt{0x01000000} \\
         \texttt{CH 01} & \texttt{OM45\_THERM\_Leg\_A} & 1  & \texttt{0x02000000} \\
         \texttt{CH 16} & \texttt{OM23\_THERM\_Leg\_A} & 16 & \texttt{0x00000100} \\
         \texttt{CH 17} & \texttt{OM61\_THERM\_Leg\_A} & 17 & \texttt{0x00000200} \\
@@ -57,14 +57,17 @@ It is important to note that we \emph{should} only enable current source for the
 channels that are about to be read.
 The correspondence between register bits and the channel they control are listed
 in \autoref{tab:register-channel-correspondence}.
-The 8-byte register controls a total of 32 ADC channels, with each channel
-controlled by a single \emph{bit}:
+The 8-byte (from left to right: 1-8) register controls a total of 32 ADC
+channels, with each channel controlled by a single \emph{bit}:
 
 \begin{itemize}
-    \item bit 1-2: control line 7-0, with the rightmost bit controlling line 0.
-    \item bit 3-4: control line 15-8, rightmost bit controlling line 8.
+    \item byte 1-2: control line 7-0, with the rightmost bit controlling line 0.
+    \item byte 3-4: control line 15-8, rightmost bit controlling line 8.
     \item So on and so forth.
 \end{itemize}
+
+The platinum-based thermistor uses a voltage divider for measurement, and its
+current source should \emph{never} be enabled.
 
 Also, \textbf{Version} must be set to \textbf{2}, \textbf{Address} must be set
 to the desired command, and \textbf{Line} must be set to the desired channel to
