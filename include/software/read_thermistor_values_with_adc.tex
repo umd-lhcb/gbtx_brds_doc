@@ -11,14 +11,19 @@ To perform a readout, first follow \autoref{fig:adc-current-channel} to enable
 current source of the channels to readout,
 then follow \autoref{fig:adc-readout} to readout a voltage of that channel.
 
+In production settings, the \textbf{Current Source} registers should be set as
+\texttt{0x02000700} to enable current source for all 4 optical mezzanines
+channels, but \emph{not} for the Platinum-based thermistor channel.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{res/gbt_client_adc_readout_currentsource.png}
     \caption{
         Parameters to send a command to the SCA to activate 100 $\mu$A current
         sources for specific channels.
-        For SCAv2, it is OK to enable current source on every channel (thus the
-        \texttt{0xFFFFFFFF} in \textbf{Current Source} setting).
+        For SCAv2, \emph{for debugging purpose}, it is OK to enable current
+        source on every channel (thus the \texttt{0xFFFFFFFF} in
+        \textbf{Current Source} setting).
     }
     \label{fig:adc-current-channel}
 \end{figure}
