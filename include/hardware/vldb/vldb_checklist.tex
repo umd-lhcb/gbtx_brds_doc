@@ -1,8 +1,107 @@
-\subsubsection{Shorts versus GND}
+\subsection{VLDB Checklist}
 
-somehting.
+Contents:
+\begin{enumerate}
+    \item Part A: Shorts versus GND
+    \item Part B: DCDC-Power check
+    \item Part C: DCDC-Enable pins
+    \item Part D: GBTx I2C test
+    \item Part E: Resets, status LEDs, REFclk SMAs and config pins
+    \item Part F:
+    \Item Part G:
+\end{enumerate}
+
+\subsubsection{Part A: Shorts versus GND}
+
+No power connected, no DCDCs connected
+
+Check to ensure no shorts between ground and following pins/points (i.e. Resistance=0)
+Note the following: Most capacitors are on back of board. Capacitors will have two sides with different resistance amounts, fine as long as one isn’t 0.
 
 \begin{enumerate}
-    \item 1.5 V (D1)
-    \item another
+    \item D1 (1.5V)
+    \item D2 (3.3V)
+    \item C3 (1.5V – GBTx_D and SCA_D)
+    \item C59 (1.5V – SCA_A)
+    \item C41 (1.5V – GBTx_C)
+    \item TP11 (2.5V – VTRx)
+    \item C44 (2.5V – VTRx_Tx)
+    \item C45 (2.5V – VTRx_Rx)
 \end{enumerate}
+
+Tested:
+\begin{enumerate}
+    \item Power ports shortcuts
+    \item GBTx, SCA and VTRx main power network shortcuts
+\end{enumerate}
+
+
+\subsubsection{Part B: DCDC-Power check}
+
+Connect the 5V power supply and the 2 DCDCs (1V5 and 2V5/3V5)
+
+Check voltage level and LEDs at following points:
+
+\begin{enumerate}
+    \item LED LD5 ON (1.5V)
+    \item LED LD6 ON (2.5V/3.5V)
+    \itemD1 (5V)
+    \item TP11 (2.5V/3.5V)
+    \item TP9 (1.5V)
+    \item TP12 (2.5V – OK PGOOD)
+    \item TP10 (1.5V – OK PGOOD)
+\end{enumerate}
+
+Tested:
+\begin{enumerate}
+    \item Voltage level on power ports
+    \item Voltage level on DCDC outputs
+\end{enumerate}
+
+\subsubsection{Part C: DCDC-Enable pins}
+
+Install jumpers at ST2 (1.5V EN) and ST3 (2.5V EN)
+
+Connect USB-I2C dongle
+
+\begin{enumerate}
+    \item LED LD5 ON (1.5V)
+    \item LED LD6 ON (2.5V)
+\end{enumerate}
+
+Send 1.5V reset
+\begin{enumerate}
+    \item LED LD5 OFF for 0.5 seconds, then ON (1.5V)
+\end{enumerate}
+
+Send 2.5V reset
+\begin{enumerate}
+    \item LED LD6 OFF for 0.5 seconds, then ON (2.5V)
+\end{enumerate}
+
+Tested:
+\begin{enumerate}
+    \item Power-down-from-dongle pins
+    \item Power-up-from-dongle pings
+\end{enumerate}
+
+
+\subsubsection{Part D: GBTx I2C test}
+
+Note that for this section, 0 = left and 1 = right
+Set StateOverride and RefClkSelect in SW2 to 0
+
+Set I2C address (SW3) to 0001
+Read GBTx Status, address I2C = 1, status = 5
+
+Set I2C address to 1110
+Read GBTx status, adress I2C = dx14, status = 5
+
+(ST3 is mounted which means that the GBTx chip is reset until the PGOOD is issued)
+
+Tested:
+\begin{enumerate}
+    \item Switch SW3 address
+    \item I2C SDA and SCL pins
+\end{enumerate}
+
