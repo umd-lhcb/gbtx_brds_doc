@@ -1,28 +1,34 @@
 \subsubsection{Shorts versus GND}
 
-No power connected, no DCDCs connected
-
-Check to ensure no shorts between ground and following pins/points (i.e. Resistance=0)
-Note the following: Most capacitors are on back of board. Capacitors will have two sides with different resistance amounts, fine as long as one isn't 0.
-
-Note: All tests done at 5V. VLDB has min of 5V and max of 12V with current limit of 3A
+We shouldn't connect any power to the VLDB when doing this test.
+Check to ensure no shorts between ground and following pins/points:
 
 \begin{enumerate}
-    \item D1 (1.5V)
-    \item D2 (3.3V)
-    \item C3 (1.5V: GBTx\_D and SCA\_D)
-    \item C59 (1.5V: SCA\_A)
-    \item C41 (1.5V: GBTx\_C)
-    \item TP11 (2.5V: VTRx)
-    \item C44 (2.5V: VTRx\_Tx)
-    \item C45 (2.5V: VTRx\_Rx)
+    \item \texttt{D1} (1.5V)
+    \item \texttt{D2} (3.3V)
+    \item \texttt{C3} (1.5V: \texttt{GBTx\_D} and \texttt{SCA\_D})
+    \item \texttt{C59} (1.5V: \texttt{SCA\_A})
+    \item \texttt{C41} (1.5V: \texttt{GBTx\_C})
+    \item \texttt{TP11} (2.5V: \texttt{VTRx})
+    \item \texttt{C44} (2.5V: \texttt{VTRx\_Tx})
+    \item \texttt{C45} (2.5V: \texttt{VTRx\_Rx})
 \end{enumerate}
 
-Tested:
-\begin{enumerate}
+\begin{leftbar}
+    Most capacitors are on back of board. Capacitors will have two sides with
+    different resistance amounts, fine as long as one isn't 0.
+\end{leftbar}
+
+\begin{leftbar}
+    All tests done at 5V. VLDB has min of 5V and max of 12V with current limit
+    of 3A
+\end{leftbar}
+
+Tested in this section:
+\begin{itemize}
     \item Power ports shortcuts
     \item GBTx, SCA and VTRx main power network shortcuts
-\end{enumerate}
+\end{itemize}
 
 
 \subsubsection{DCDC-Power check}
@@ -41,7 +47,7 @@ Check voltage level and LEDs at following points:
     \item TP10 (1.5V – OK PGOOD)
 \end{enumerate}
 
-Tested:
+Tested in this section:
 \begin{enumerate}
     \item Voltage level on power ports
     \item Voltage level on DCDC outputs
@@ -68,7 +74,7 @@ Send 2.5V reset
     \item LED LD6 OFF for 0.5 seconds, then ON (2.5V)
 \end{enumerate}
 
-Tested:
+Tested in this section:
 \begin{enumerate}
     \item Power-down-from-dongle pins
     \item Power-up-from-dongle pings
@@ -88,7 +94,7 @@ Read GBTx status, adress I2C = dx14, status = 5
 
 (ST3 is mounted which means that the GBTx chip is reset until the PGOOD is issued)
 
-Tested:
+Tested in this section:
 \begin{enumerate}
     \item Switch SW3 address
     \item I2C SDA and SCL pins
@@ -147,7 +153,7 @@ Keep the same configuration (trscv) + testoutput = TxRdy (reg 280 = 30) control 
     \item ClkDes7
 \end{enumerate}
 
-Tested:
+Tested in this section:
 \begin{enumerate}
     \item Bullseye pins (TP2)
 \end{enumerate}
