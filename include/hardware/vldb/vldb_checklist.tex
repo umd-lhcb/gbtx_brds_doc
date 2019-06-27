@@ -3,19 +3,19 @@
 No power connected, no DCDCs connected
 
 Check to ensure no shorts between ground and following pins/points (i.e. Resistance=0)
-Note the following: Most capacitors are on back of board. Capacitors will have two sides with different resistance amounts, fine as long as one isn’t 0.
+Note the following: Most capacitors are on back of board. Capacitors will have two sides with different resistance amounts, fine as long as one isn't 0.
 
 Note: All tests done at 5V. VLDB has min of 5V and max of 12V with current limit of 3A
 
 \begin{enumerate}
     \item D1 (1.5V)
     \item D2 (3.3V)
-    \item C3 (1.5V – GBTx_D and SCA_D)
-    \item C59 (1.5V – SCA_A)
-    \item C41 (1.5V – GBTx_C)
-    \item TP11 (2.5V – VTRx)
-    \item C44 (2.5V – VTRx_Tx)
-    \item C45 (2.5V – VTRx_Rx)
+    \item C3 (1.5V: GBTx\_D and SCA\_D)
+    \item C59 (1.5V: SCA\_A)
+    \item C41 (1.5V: GBTx\_C)
+    \item TP11 (2.5V: VTRx)
+    \item C44 (2.5V: VTRx\_Tx)
+    \item C45 (2.5V: VTRx\_Rx)
 \end{enumerate}
 
 Tested:
@@ -107,7 +107,7 @@ Configure the GBTx in (Tranceiver) and LOOPBACK A (maybe a reset is necessary). 
 Configure generator 1 with 120 MHz:
 
 FPGA Configuration:
-\being{enumerate}
+\begin{enumerate}
     \item Connect the 123 MHz to the Refclkin of the FPGA tranceiver
     \item Loopback the SFP on the KC705 board and check on chipscope that the recovered signal is ok
     \item Connect the GBT-FPGA KC705 to the GBTx (VLDB/SFP to the KC705/SFP, both directions), with a DATA header (0101)
@@ -131,10 +131,10 @@ Reset PB1, write register 365 with 0xAA value (configDone flag up)
 
 Check: LD1, LD2, LD3 ON
 
-\subsubsetion{Bullseye}
+\subsubsection{Bullseye}
 Keep the same configuration (trscv) + testoutput = TxRdy (reg 280 = 30) control and all ClkDES and the Testclkout as 40 MHz
 
-\being{enumerate}
+\begin{enumerate}
     \item Testclockout (40 MHz, SE)
     \item Testoutput should be 1 (then reset => 0) and then back 1
     \item ClkDes0
@@ -148,7 +148,7 @@ Keep the same configuration (trscv) + testoutput = TxRdy (reg 280 = 30) control 
 \end{enumerate}
 
 Tested:
-\being{enumerate}
+\begin{enumerate}
     \item Bullseye pins (TP2)
 \end{enumerate}
 
