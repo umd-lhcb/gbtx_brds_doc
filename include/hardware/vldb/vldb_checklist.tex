@@ -1,17 +1,16 @@
 \subsubsection{Shorts versus GND}
-
 We shouldn't connect any power to the VLDB when doing this test.
 Check to ensure no shorts between ground and following pins/points:
 
 \begin{enumerate}
     \item \texttt{D1} (1.5V)
     \item \texttt{D2} (3.3V)
-    \item \texttt{C3} (1.5V: \texttt{GBTx\_D} and \texttt{SCA\_D})
-    \item \texttt{C59} (1.5V: \texttt{SCA\_A})
-    \item \texttt{C41} (1.5V: \texttt{GBTx\_C})
-    \item \texttt{TP11} (2.5V: \texttt{VTRx})
-    \item \texttt{C44} (2.5V: \texttt{VTRx\_Tx})
-    \item \texttt{C45} (2.5V: \texttt{VTRx\_Rx})
+    \item \texttt{C3} (1.5V---\texttt{GBTx\_D} and \texttt{SCA\_D})
+    \item \texttt{C59} (1.5V---\texttt{SCA\_A})
+    \item \texttt{C41} (1.5V---\texttt{GBTx\_C})
+    \item \texttt{TP11} (2.5V---\texttt{VTRx})
+    \item \texttt{C44} (2.5V---\texttt{VTRx\_Tx})
+    \item \texttt{C45} (2.5V---\texttt{VTRx\_Rx})
 \end{enumerate}
 
 \begin{leftbar}
@@ -32,19 +31,17 @@ Tested in this section:
 
 
 \subsubsection{DCDC-Power check}
-
-Connect the 5V power supply and the 2 DCDCs (1V5 and 2V5/3V5)
-
-Check voltage level and LEDs at following points:
+Connect the 5V power supply to the 2 DCDCs (1V5 and 2V5/3V5), then check voltage
+level and LEDs at following points:
 
 \begin{enumerate}
-    \item LED LD5 ON (1.5V)
-    \item LED LD6 ON (2.5V/3.5V)
-    \item D1 (5V)
-    \item TP11 (2.5V/3.5V)
-    \item TP9 (1.5V)
-    \item TP12 (2.5V – OK PGOOD)
-    \item TP10 (1.5V – OK PGOOD)
+    \item LED \texttt{LD5} ON (1.5V)
+    \item LED \texttt{LD6} ON (2.5V/3.5V)
+    \item \texttt{D1} (5V)
+    \item \texttt{TP11} (2.5V/3.5V)
+    \item \texttt{TP9} (1.5V)
+    \item \texttt{TP12} (2.5V---OK PGOOD)
+    \item \texttt{TP10} (1.5V---OK PGOOD)
 \end{enumerate}
 
 Tested in this section:
@@ -54,108 +51,70 @@ Tested in this section:
 \end{enumerate}
 
 \subsubsection{DCDC-Enable pins}
+To make sure the DCDC modules actually deliver power to the VLDB, do the
+following steps:
 
-Install jumpers at ST2 (1.5V EN) and ST3 (2.5V EN)
+Install jumpers at \texttt{ST2} (1.5V EN) and \texttt{ST3} (2.5V EN).
 
-Connect USB-I2C dongle
-
+Connect USB-\itwoc\ dongle.
+\begin{leftbar}
+    You should see:
 \begin{enumerate}
-    \item LED LD5 ON (1.5V)
-    \item LED LD6 ON (2.5V)
+    \item LED \texttt{LD5} ON (1.5V)
+    \item LED \texttt{LD6} ON (2.5V)
 \end{enumerate}
+\end{leftbar}
 
-Send 1.5V reset
+Send 1.5V reset with \textbf{GBTx Programmer}.
+\begin{leftbar}
+    You should see:
 \begin{enumerate}
-    \item LED LD5 OFF for 0.5 seconds, then ON (1.5V)
+    \item LED \texttt{LD5} OFF for 0.5 seconds, then ON (1.5V)
 \end{enumerate}
+\end{leftbar}
 
-Send 2.5V reset
+Send 2.5V reset with the same software.
+\begin{leftbar}
+    You should see:
 \begin{enumerate}
-    \item LED LD6 OFF for 0.5 seconds, then ON (2.5V)
+    \item LED \texttt{LD6} OFF for 0.5 seconds, then ON (2.5V)
 \end{enumerate}
+\end{leftbar}
 
 Tested in this section:
 \begin{enumerate}
-    \item Power-down-from-dongle pins
-    \item Power-up-from-dongle pings
+    \item Power delivery to VLDB
+    \item Ability to control DCDC modules with GBTx via \itwoc.
+    \item \itwoc\ connectivity
 \end{enumerate}
 
 
-\subsubsection{GBTx I2C test}
+\subsubsection{Configure GBTx \itwoc\ address}
+To do so, make sure to set \texttt{StateOverride} and \texttt{RefClkSelect} in
+\texttt{SW2} to 0.
 
-Note that for this section, 0 = left and 1 = right
-Set StateOverride and RefClkSelect in SW2 to 0
+The GBTx \itwoc\ address is controlled by \texttt{SW3[5:8]}. A few examples:
 
-Set I2C address (SW3) to 0001
-Read GBTx Status, address I2C = 1, status = 5
+\begin{itemize}
+    \item Set \texttt{SW3} to 0001, scan GBTx, \itwoc\ address is 1.
+    \item Set \texttt{SW3} to 1110, scan GBTx, \itwoc\ address is 14.
+\end{itemize}
 
-Set I2C address to 1110
-Read GBTx status, adress I2C = dx14, status = 5
+\begin{leftbar}
+    If we flip the DIPs to ON, it means that we are pulling them low.
+\end{leftbar}
 
-(ST3 is mounted which means that the GBTx chip is reset until the PGOOD is issued)
+\begin{leftbar}
+    \texttt{ST3} is mounted which means that the GBTx chip is held under reset
+    until the PGOOD (voltage is good) is issued.
+\end{leftbar}
 
 Tested in this section:
 \begin{enumerate}
-    \item Switch SW3 address
-    \item I2C SDA and SCL pins
+    \item Functionality of switch \texttt{SW3}
 \end{enumerate}
 
-\subsubsection{Resets, status LEDs, REFclk SMAs and config pins}
 
-Set the pin CONFIGSELECT to 1 (SW2). Set TxDATAVALID to 1 (SW2)
-MODES in SW1 = 0010
-
-If there is a DCDC 2.5V, connect the VTRx (RadHard)
-If there is a DCDC 3.3V, connect an SFP
-
-Configure the GBTx in (Tranceiver) and LOOPBACK A (maybe a reset is necessary). This implies that the mode switches (SW1) must be 0010.
-
-Configure generator 1 with 120 MHz:
-
-FPGA Configuration:
-\begin{enumerate}
-    \item Connect the 123 MHz to the Refclkin of the FPGA tranceiver
-    \item Loopback the SFP on the KC705 board and check on chipscope that the recovered signal is ok
-    \item Connect the GBT-FPGA KC705 to the GBTx (VLDB/SFP to the KC705/SFP, both directions), with a DATA header (0101)
-\end{enumerate}
-
-Check: LD1, LD2, LD3 ON
-
-Change the header type on the GBT-FPGA to IDLE
-
-Check: LD2 = OFF
-
-Press PB1 during a moment, and write register 365 with 0xAA value (configDOne flag up)
-
-Check: LD1, LD2, LD3 ON
-
-REFCLKSELECT => 1
-
-Connect REFCLK SMAs (PX1 and PX2) with a 40.078 MHz generator (CG635)
-
-Reset PB1, write register 365 with 0xAA value (configDone flag up)
-
-Check: LD1, LD2, LD3 ON
-
-\subsubsection{Bullseye}
-Keep the same configuration (trscv) + testoutput = TxRdy (reg 280 = 30) control and all ClkDES and the Testclkout as 40 MHz
-
-\begin{enumerate}
-    \item Testclockout (40 MHz, SE)
-    \item Testoutput should be 1 (then reset => 0) and then back 1
-    \item ClkDes0
-    \item ClkDes1
-    \item ClkDes2
-    \item ClkDes3
-    \item ClkDes4
-    \item ClkDes5
-    \item ClkDes6
-    \item ClkDes7
-\end{enumerate}
-
-Tested in this section:
-\begin{enumerate}
-    \item Bullseye pins (TP2)
-\end{enumerate}
-
-\subsubsection{E-LINKS}
+\subsubsection{Bring external clock to VLDB}
+Flip the \texttt{RefClkSelect} to 1, then connect a external 40.078 MHz clock to
+the SMA connectors on the VLDB.
