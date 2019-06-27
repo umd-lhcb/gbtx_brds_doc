@@ -1,22 +1,11 @@
-\subsection{VLDB Checklist}
-
-Contents:
-\begin{enumerate}
-    \item Part A: Shorts versus GND
-    \item Part B: DCDC-Power check
-    \item Part C: DCDC-Enable pins
-    \item Part D: GBTx I2C test
-    \item Part E: Resets, status LEDs, REFclk SMAs and config pins
-    \item Part F:
-    \Item Part G:
-\end{enumerate}
-
-\subsubsection{Part A: Shorts versus GND}
+\subsubsection{Shorts versus GND}
 
 No power connected, no DCDCs connected
 
 Check to ensure no shorts between ground and following pins/points (i.e. Resistance=0)
 Note the following: Most capacitors are on back of board. Capacitors will have two sides with different resistance amounts, fine as long as one isn’t 0.
+
+Note: All tests done at 5V. VLDB has min of 5V and max of 12V with current limit of 3A
 
 \begin{enumerate}
     \item D1 (1.5V)
@@ -36,7 +25,7 @@ Tested:
 \end{enumerate}
 
 
-\subsubsection{Part B: DCDC-Power check}
+\subsubsection{DCDC-Power check}
 
 Connect the 5V power supply and the 2 DCDCs (1V5 and 2V5/3V5)
 
@@ -45,7 +34,7 @@ Check voltage level and LEDs at following points:
 \begin{enumerate}
     \item LED LD5 ON (1.5V)
     \item LED LD6 ON (2.5V/3.5V)
-    \itemD1 (5V)
+    \item D1 (5V)
     \item TP11 (2.5V/3.5V)
     \item TP9 (1.5V)
     \item TP12 (2.5V – OK PGOOD)
@@ -58,7 +47,7 @@ Tested:
     \item Voltage level on DCDC outputs
 \end{enumerate}
 
-\subsubsection{Part C: DCDC-Enable pins}
+\subsubsection{DCDC-Enable pins}
 
 Install jumpers at ST2 (1.5V EN) and ST3 (2.5V EN)
 
@@ -86,7 +75,7 @@ Tested:
 \end{enumerate}
 
 
-\subsubsection{Part D: GBTx I2C test}
+\subsubsection{GBTx I2C test}
 
 Note that for this section, 0 = left and 1 = right
 Set StateOverride and RefClkSelect in SW2 to 0
@@ -105,3 +94,62 @@ Tested:
     \item I2C SDA and SCL pins
 \end{enumerate}
 
+\subsubsection{Resets, status LEDs, REFclk SMAs and config pins}
+
+Set the pin CONFIGSELECT to 1 (SW2). Set TxDATAVALID to 1 (SW2)
+MODES in SW1 = 0010
+
+If there is a DCDC 2.5V, connect the VTRx (RadHard)
+If there is a DCDC 3.3V, connect an SFP
+
+Configure the GBTx in (Tranceiver) and LOOPBACK A (maybe a reset is necessary). This implies that the mode switches (SW1) must be 0010.
+
+Configure generator 1 with 120 MHz:
+
+FPGA Configuration:
+\being{enumerate}
+    \item Connect the 123 MHz to the Refclkin of the FPGA tranceiver
+    \item Loopback the SFP on the KC705 board and check on chipscope that the recovered signal is ok
+    \item Connect the GBT-FPGA KC705 to the GBTx (VLDB/SFP to the KC705/SFP, both directions), with a DATA header (0101)
+\end{enumerate}
+
+Check: LD1, LD2, LD3 ON
+
+Change the header type on the GBT-FPGA to IDLE
+
+Check: LD2 = OFF
+
+Press PB1 during a moment, and write register 365 with 0xAA value (configDOne flag up)
+
+Check: LD1, LD2, LD3 ON
+
+REFCLKSELECT => 1
+
+Connect REFCLK SMAs (PX1 and PX2) with a 40.078 MHz generator (CG635)
+
+Reset PB1, write register 365 with 0xAA value (configDone flag up)
+
+Check: LD1, LD2, LD3 ON
+
+\subsubsetion{Bullseye}
+Keep the same configuration (trscv) + testoutput = TxRdy (reg 280 = 30) control and all ClkDES and the Testclkout as 40 MHz
+
+\being{enumerate}
+    \item Testclockout (40 MHz, SE)
+    \item Testoutput should be 1 (then reset => 0) and then back 1
+    \item ClkDes0
+    \item ClkDes1
+    \item ClkDes2
+    \item ClkDes3
+    \item ClkDes4
+    \item ClkDes5
+    \item ClkDes6
+    \item ClkDes7
+\end{enumerate}
+
+Tested:
+\being{enumerate}
+    \item Bullseye pins (TP2)
+\end{enumerate}
+
+\subsubsection{E-LINKS}
