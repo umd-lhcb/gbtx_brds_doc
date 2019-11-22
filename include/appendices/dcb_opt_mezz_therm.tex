@@ -12,22 +12,22 @@
         ymajorgrids=true, xmajorgrids=true,
         legend style={at={(0.5,-0.2)},anchor=north}
     ]
-        \addplot table [x index=1, y index=0, col sep=comma] {res/thermistor_readout_temp_vals.csv};
+        \addplot table [x index=1, y index=0, col sep=comma] {res/opt_mezz_therm_readout/various_readout.csv};
         \addlegendentry{Before fix}
 
-        \addplot table [x index=4, y index=3, col sep=comma] {res/thermistor_readout_temp_vals.csv};
+        \addplot table [x index=4, y index=3, col sep=comma] {res/opt_mezz_therm_readout/various_readout.csv};
         \addlegendentry{Manufacturer}
 
-        \addplot table [x index=7, y index=6, col sep=comma] {res/thermistor_readout_temp_vals.csv};
+        \addplot table [x index=7, y index=6, col sep=comma] {res/opt_mezz_therm_readout/various_readout.csv};
         \addlegendentry{After fix, run 1}
 
-        \addplot table [x index=10, y index=9, col sep=comma] {res/thermistor_readout_temp_vals.csv};
+        \addplot table [x index=10, y index=9, col sep=comma] {res/opt_mezz_therm_readout/various_readout.csv};
         \addlegendentry{After fix, run 2}
 
-        \addplot table [x index=13, y index=12, col sep=comma] {res/thermistor_readout_temp_vals.csv};
+        \addplot table [x index=13, y index=12, col sep=comma] {res/opt_mezz_therm_readout/various_readout.csv};
         \addlegendentry{Heat gun, temperature increasing}
 
-        \addplot table [x index=16, y index=15, col sep=comma] {res/thermistor_readout_temp_vals.csv};
+        \addplot table [x index=16, y index=15, col sep=comma] {res/opt_mezz_therm_readout/various_readout.csv};
         \addlegendentry{Heat gun, temperature decreasing}
     \end{axis}
 \end{tikzpicture}
@@ -35,4 +35,37 @@
     Various RT curves for optical mezzanine thermistor.
 }
 \label{fig:rt-curves-opt-mezz}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={$R_T/R_{25}$},
+        ylabel={Temperature [C]},
+        xmin=0.15, xmax=0.6,
+        ymin=30, ymax=70,
+        ymajorgrids=true, xmajorgrids=true,
+        legend style={at={(0.5,-0.2)},anchor=north}
+    ]
+        \addplot table [x index=1, y index=0, col sep=comma] {res/opt_mezz_therm_readout/per_opt_mezz.csv};
+        \addlegendentry{OM45}
+
+        \addplot table [x index=4, y index=3, col sep=comma] {res/opt_mezz_therm_readout/per_opt_mezz.csv};
+        \addlegendentry{OM23}
+
+        \addplot table [x index=7, y index=6, col sep=comma] {res/opt_mezz_therm_readout/per_opt_mezz.csv};
+        \addlegendentry{OM61}
+
+        \addplot table [x index=10, y index=9, col sep=comma] {res/opt_mezz_therm_readout/per_opt_mezz.csv};
+        \addlegendentry{OMMC}
+
+        \addplot table [x index=13, y index=12, col sep=comma] {res/opt_mezz_therm_readout/per_opt_mezz.csv};
+        \addlegendentry{Manufacturer}
+    \end{axis}
+\end{tikzpicture}
+\caption{
+    Per optical mezzanine thermistor readout.
+}
+\label{fig:rt-curves-opt-mezz-per-mezz}
 \end{figure}
